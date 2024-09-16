@@ -26,9 +26,26 @@ function playRound(humanChoice, computerChoice) {
     if ((humanChoice === 'rock' && computerChoice === 'scissors') || (humanChoice === 'scissors'
 && computerChoice === 'paper') || humanChoice === 'paper' && computerChoice === 'rock') {
         humanScore++;
-        console.log(`${humanChoice} beats ${computerChoice}. You win!`)
+        console.log(`${humanChoice} beats ${computerChoice}. You win!`);
         return;
 }
     computerScore++;
-    console.log(`${computerChoice} beats ${humanChoice}. You lose... too bad.`)
+    console.log(`${computerChoice} beats ${humanChoice}. You lose... too bad.`);
+}
+
+// Play 5 rounds and keep playing until a winner can be decalred.
+function playGame() {
+    for (let i = 0; i < 5; i++) {
+        playRound(getHumanChoice(), getComputerChoice());
+    }
+    // Keep playing if there is a tie.
+    while (humanScore === computerScore) {
+        console.log("Sudden Death");
+        playRound(getHumanChoice(), getComputerChoice());
+    }
+    console.log(`Computer: ${computerScore} \n User: ${humanScore}`);
+    console.log(humanScore > computerScore ? "You win! Congrats :)" : "You lost. Sorry :(");
+    // Reset the scores.
+    humanScore = 0;
+    computerScore = 0;
 }
