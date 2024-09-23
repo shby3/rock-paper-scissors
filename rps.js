@@ -14,15 +14,6 @@ const gameResult = document.querySelector("#gameResult");
 // Function to return 'rock', 'paper', or 'scissors'
 const getcompChoice = () => choices[getRandomInt(3)];
 
-// Prompt the user for a valid choice and return it.
-function getHumanChoice() {
-    let choice = prompt("Rock, paper, or scissors?");
-    while (!choices.includes(choice.toLowerCase())) {
-        choice = prompt("You can only choose rock, paper, or scissors.");
-    }
-    return choice.toLowerCase();
-}
-
 // Take a player choice and a comp choice and determine the winner.
 function playRound(humanChoice, compChoice) {
     roundChoice.textContent = (`You play ${humanChoice} and the comp plays ${compChoice}\r\n`);
