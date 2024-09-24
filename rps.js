@@ -43,6 +43,7 @@ function _updateScore(winner) {
 
     if (humanScore === 5 || compScore === 5) {
         gameResult.textContent = (`${winner} wins!`);
+        overlayOn();
     }
 }
 
@@ -61,3 +62,11 @@ const scissorsBtn = document.querySelector("#scissorsBtn");
 scissorsBtn.addEventListener("click", () => {
     playRound("scissors", getcompChoice());
 });
+
+// Functions to turn the overlay element on/off.
+function overlayOn() {
+    document.getElementById("overlay").style.display = "block";
+  }
+function overlayOff() {
+    document.getElementById("overlay").style.display = "none";
+}
