@@ -10,6 +10,7 @@ const compScoreElem = document.querySelector("#compScoreElem");
 const roundChoice = document.querySelector("#roundChoice");
 const roundResult = document.querySelector("#roundResult");
 const gameResult = document.querySelector("#gameResult");
+const restartBtn = document.querySelector("#restartBtn");
 
 // Function to return 'rock', 'paper', or 'scissors'
 const getcompChoice = () => choices[getRandomInt(3)];
@@ -49,19 +50,15 @@ function _updateScore(winner) {
 
 // Event listeners for clicking rock button
 const rockBtn = document.querySelector("#rockBtn");
-rockBtn.addEventListener("click", () => {
-    playRound("rock", getcompChoice());
-});
+rockBtn.addEventListener("click", () => playRound("rock", getcompChoice()));
+
 // Event listener for clicking paper button
 const paperBtn = document.querySelector("#paperBtn");
-paperBtn.addEventListener("click", () => {
-    playRound("paper", getcompChoice());
-});
+paperBtn.addEventListener("click", () => playRound("paper", getcompChoice()));
+
 // Event listener for clicking scissors button
 const scissorsBtn = document.querySelector("#scissorsBtn");
-scissorsBtn.addEventListener("click", () => {
-    playRound("scissors", getcompChoice());
-});
+scissorsBtn.addEventListener("click", () => playRound("scissors", getcompChoice()));
 
 // Functions to turn the overlay element on/off.
 function overlayOn() {
@@ -70,3 +67,15 @@ function overlayOn() {
 function overlayOff() {
     document.getElementById("overlay").style.display = "none";
 }
+
+// Function to restart the game after the overlay has been turned on.
+function restart() {
+    humanScore = 0;
+    compScore = 0;
+    humanScoreElem.textContent = (`Human: ${humanScore}`);
+    compScoreElem.textContent = (`Human: ${compScore}`);
+    roundChoice.textContent = ("");
+    roundResult.textContent = ("");
+    overlayOff();
+}
+restartBtn.addEventListener("click", restart);
